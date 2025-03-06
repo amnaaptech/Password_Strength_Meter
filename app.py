@@ -41,16 +41,14 @@ def check_password_strength(password):
         return "❌ Weak Password - Improve it using the suggestions below.", "red", suggestions
 
 # Function to generate a strong password
-# Function to generate a strong password (8 to 9 characters)
 def generate_password():
     characters = string.ascii_uppercase + string.ascii_lowercase + string.digits + "!@#$%^&*"
     
-    # Ensure password contains at least one of each required character type
     password = [
-        secrets.choice(string.ascii_uppercase),  # At least one uppercase
-        secrets.choice(string.ascii_lowercase),  # At least one lowercase
-        secrets.choice(string.digits),           # At least one digit
-        secrets.choice("!@#$%^&*")               # At least one special character
+        secrets.choice(string.ascii_uppercase),  
+        secrets.choice(string.ascii_lowercase), 
+        secrets.choice(string.digits),        
+        secrets.choice("!@#$%^&*")  
     ]
 
     # Fill the rest with random choices
@@ -62,12 +60,12 @@ def generate_password():
     return ''.join(password)
 
 
-# Streamlit UI
+#UI
 st.set_page_config(page_title="Password Strength Meter", page_icon="🔐", layout="centered")
 
 st.title("🔐 Password Strength Meter")
 
-# User Input for Password
+# User Input 
 
 password = st.text_input("Enter your password:", type="password")
 
@@ -83,7 +81,7 @@ if st.button("Check Strength"):
     else:
         st.error("⚠️ Please enter a password first!")
 
-# Generate Strong Password Button
+# Generate Button
 if st.button("Generate Strong Password"):
     strong_password = generate_password()
     st.success(f"🔑 Suggested Strong Password: `{strong_password}`")
